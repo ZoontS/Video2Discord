@@ -40,15 +40,6 @@ while True:
                 os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -pix_fmt yuv420p -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f webm NUL")
                 os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -pix_fmt yuv420p -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos\\{output_video}.webm\"")
         
-        elif duration < 91:
-            bitrate -= 64
-            if height >= 720:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -pix_fmt yuv420p -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -pass 1 -an -y -f webm NUL")
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -pix_fmt yuv420p -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos\\{output_video}.webm\"")
-            else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -pix_fmt yuv420p -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f webm NUL")
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -pix_fmt yuv420p -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos\\{output_video}.webm\"")
-
         elif duration < 121:
             bitrate -= 64
             if height >= 480:
