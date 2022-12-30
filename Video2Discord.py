@@ -27,115 +27,115 @@ for input_video in input_video_list:
         if duration < 31:
             bitrate -= 128
             if height >= 1080:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:1080 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:1080 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:1080 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:1080 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
     
         elif duration < 61:
             bitrate -= 96
             if height >= 720:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 91:
             bitrate -= 64
             if height >= 720:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:720 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:720 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=-1:720 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:720 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
         
         elif duration < 121:
             bitrate -= 64
             if height >= 480:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 181:
             bitrate -= 48
             if height >= 480:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:480 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 301:
             bitrate -= 32
             if height >= 320:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:320 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:320 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:320 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:320 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 421:
             bitrate -= 24
             if height >= 240:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:240 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:240 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:240 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:240 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
 
         else:
             bitrate -= 12
             if height >= 144:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:144 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:144 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:144 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=-1:144 -b:v {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
 
     else:
         if duration < 31:
             bitrate -= 128
             if width >= 1080:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=1080:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=1080:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=1080:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=1080:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 128k \"{script_folder}Videos/{output_video}.webm\"")
     
         elif duration < 61:
             bitrate -= 96
             if width >= 720:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=720:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=720:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=720:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=720:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 96k \"{script_folder}Videos/{output_video}.webm\"")
         
         elif duration < 91:
             bitrate -= 64
             if width >= 720:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=720:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=720:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -vf scale=720:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=720:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 121:
             bitrate -= 64
             if width >= 480:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 64k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 181:
             bitrate -= 48
             if width >= 480:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=480:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 48k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 301:
             bitrate -= 32
             if width >= 320:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=320:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=320:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=320:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=320:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 32k \"{script_folder}Videos/{output_video}.webm\"")
 
         elif duration < 421:
             bitrate -= 24
             if width >= 240:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=240:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=240:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=240:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=240:-1 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -b:a 24k \"{script_folder}Videos/{output_video}.webm\"")
 
         else:
             bitrate -= 12
             if width >= 144:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=144:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=144:-1 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=144:-1 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -vf scale=144:-1 -b:v {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
             else:
-                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -maxrate {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
+                os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -c:v libvpx-vp9 -cpu-used 3 -row-mt 1 -fpsmax 30 -b:v {bitrate}k -pass 2 -c:a libopus -ac 1 -b:a 12k \"{script_folder}Videos/{output_video}.webm\"")
 
     print("")
 
