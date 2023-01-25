@@ -4,9 +4,8 @@ import json
 import winsound
 from tkinter import filedialog
 
-script_folder = os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/"
-if not os.path.exists(f"{script_folder}Videos"):
-    os.makedirs(f"{script_folder}Videos")
+if not os.path.isdir("Videos"):
+    os.makedirs("Videos")
 
 input_video_list = filedialog.askopenfilenames()
 
@@ -65,7 +64,7 @@ for input_video in input_video_list:
         if width <= int(video_res.replace("-vf scale=", "").replace(":-1", "")):
             video_res = ""
 
-    os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fps_mode:v vfr -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fps_mode:v vfr -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"{script_folder}Videos/{output_video}.webm\"")
+    os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fps_mode:v vfr -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fps_mode:v vfr -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
     
     print("")
     if os.path.isfile("temp.json") == True:
@@ -74,5 +73,5 @@ for input_video in input_video_list:
         os.remove("ffmpeg2pass-0.log")
 
 winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS)
-print("\nFinished transcoding all videos")
+print("Finished transcoding all videos")
 time.sleep(1)
