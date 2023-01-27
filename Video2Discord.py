@@ -1,8 +1,11 @@
-import os
-import time
-import json
-import winsound
+import os, time, json, winsound, shutil, sys
 from tkinter import filedialog
+
+if str(shutil.which("ffmpeg")) == "None":
+    print("FFmpeg is not installed in your computer. Please download FFmpeg and add it to PATH. If you need a guide on how to install it, you can watch a tutorial like this one: \033]8;;https://youtu.be/IECI72XEox0\033\\https://youtu.be/IECI72XEox0\033]8;;\033\\")
+    time.sleep(1)
+    input("Press the enter key to exit ")
+    sys.exit()
 
 if not os.path.isdir("Videos"):
     os.makedirs("Videos")
@@ -64,7 +67,7 @@ for input_video in input_video_list:
         if width <= int(video_res.replace("-vf scale=", "").replace(":-1", "")):
             video_res = ""
 
-    os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fps_mode:v vfr -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fps_mode:v vfr -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
+    os.system(f"ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^ffmpeg -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
     
     print("")
     if os.path.isfile("temp.json") == True:
