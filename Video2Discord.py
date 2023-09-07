@@ -39,10 +39,11 @@ for input_video in input_video_list:
         audio_bitrate = 96
 
     if duration >= 61:
+        video_res = video_res.replace("720", "540")
         audio_bitrate = 64
 
     if duration >= 91:
-        video_res = video_res.replace("720", "480")
+        video_res = video_res.replace("540", "480")
         video_fps = 30
 
     if duration >= 121:
