@@ -1,7 +1,9 @@
 # Video2Discord
 
-Python script for compressing videos so you can upload them to Discord
+Video2Discord is a Python script that compresses videos using [FFmpeg](https://ffmpeg.org/).
 
-Requires an [FFmpeg](https://ffmpeg.org/download.html) installation in PATH
+The default codec is VP9 and the target file size is 25MB which is Discord's limit for non-nitro users. 
 
-If you need a video tutorial on how to install FFmpeg, here's a good one from [TroubleChute](https://youtu.be/IECI72XEox0)
+## Usage Guide
+
+*To be added*
