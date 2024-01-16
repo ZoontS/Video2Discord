@@ -9,7 +9,7 @@ ffmpeg = "ffmpeg"
 ffprobe = "ffprobe"
 
 if os.path.isfile("FFmpeg/bin/ffmpeg.exe") == True and os.path.isfile("FFmpeg/bin/ffprobe.exe") == True:
-    print("using bundled FFmpeg")
+    print("Using bundled FFmpeg")
     ffmpeg = "FFmpeg\\bin\\ffmpeg.exe"
     ffprobe = "FFmpeg\\bin\\ffprobe.exe"
 
@@ -42,11 +42,12 @@ for input_video in input_video_list:
     duration = float(video_data["format"]["duration"])
     width = int(video_data["streams"][0]["width"])
     height = int(video_data["streams"][0]["height"])
+
     video_bitrate = (204800 / duration)
-    if video_bitrate >= 1000:
+    if video_bitrate >= 500:
         video_bitrate = video_bitrate * 0.99
-    if video_bitrate < 1000:
-        video_bitrate = video_bitrate * 0.98
+    if video_bitrate < 500:
+        video_bitrate = video_bitrate - 5
 
     if width >= height:
         video_res = "-vf scale=-1:1080"
@@ -67,29 +68,27 @@ for input_video in input_video_list:
         video_res = video_res.replace("720", "540")
         audio_bitrate = 64
 
-    if video_bitrate < 1000:
-        video_fps = 30
-
     if video_bitrate < 750:
         video_res = video_res.replace("540", "480")
 
-    if video_bitrate < 564:
-        audio_bitrate = 48
-
-    if video_bitrate < 448:
+    if video_bitrate < 450:
         video_res = video_res.replace("480", "360")
+        video_fps = 30
+        audio_bitrate = 48
         
-    if video_bitrate < 348:
-        video_res = video_res.replace("360", "240")
+    if video_bitrate < 300:
         audio_bitrate = 32
 
     if video_bitrate < 232:
+        video_res = video_res.replace("360", "240")
         audio_bitrate = 24
         audio_channel = "-ac 1 -apply_phase_inv 0"
 
-    if video_bitrate < 160:
-        video_res = video_res.replace("240", "144")
+    if video_bitrate < 140:
         audio_bitrate = 14
+
+    if video_bitrate < 90:
+        video_res = video_res.replace("240", "144")
 
     if width >= height:
         if height <= int(video_res.replace("-vf scale=-1:", "")):
@@ -98,7 +97,7 @@ for input_video in input_video_list:
         if width <= int(video_res.replace("-vf scale=", "").replace(":-1", "")):
             video_res = ""
 
-    os.system(f"{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
+    os.system(f"{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -pix_fmt yuv420p -lag-in-frames 25 -auto-alt-ref 1 -arnr-maxframes 7 -arnr-strength 4 -enable-tpl 1 -deadline good -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -pix_fmt yuv420p -lag-in-frames 25 -auto-alt-ref 1 -arnr-maxframes 7 -arnr-strength 4 -enable-tpl 1 -deadline good -cpu-used 2 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
     
     print("")
     if os.path.isfile("temp.json") == True:
