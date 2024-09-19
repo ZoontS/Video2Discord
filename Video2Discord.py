@@ -5,6 +5,7 @@
 import os, time, json, winsound, shutil, sys
 from tkinter import filedialog
 
+FILE_SIZE_LIMIT = 10 # MiB
 ffmpeg = "ffmpeg"
 ffprobe = "ffprobe"
 
@@ -36,14 +37,15 @@ for input_video in input_video_list:
 
     os.system(f"{ffprobe} -hide_banner -of json -select_streams v -show_format -show_streams -i \"{input_video}\" -o \"temp.json\"")
 
-    with open("temp.json", "r") as openfile:
+    with open("temp.json", "r", encoding="utf-8") as openfile:
         video_data = json.load(openfile)
 
     duration = float(video_data["format"]["duration"])
     width = int(video_data["streams"][0]["width"])
     height = int(video_data["streams"][0]["height"])
 
-    video_bitrate = (204800 / duration)
+    total_kb = FILE_SIZE_LIMIT * 1024 * 8
+    video_bitrate = (total_kb / duration)
     if video_bitrate >= 500:
         video_bitrate = video_bitrate * 0.99
     if video_bitrate < 500:
