@@ -99,7 +99,7 @@ for input_video in input_video_list:
         if width <= int(video_res.replace("-vf scale=", "").replace(":-1", "")):
             video_res = ""
 
-    os.system(f"{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -pix_fmt yuv420p -lag-in-frames 25 -auto-alt-ref 1 -arnr-maxframes 7 -arnr-strength 4 -enable-tpl 1 -deadline good -cpu-used 4 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -pix_fmt yuv420p -lag-in-frames 25 -auto-alt-ref 1 -arnr-maxframes 7 -arnr-strength 4 -enable-tpl 1 -deadline good -cpu-used 4 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
+    os.system(f"{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -pix_fmt yuv420p -g {video_fps * 20} -keyint_min {video_fps * 2} -lag-in-frames 25 -auto-alt-ref 1 -arnr-maxframes 7 -arnr-strength 4 -enable-tpl 1 -deadline good -cpu-used 4 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 1 -an -y -f null NUL && ^{ffmpeg} -hide_banner -loglevel warning -stats -i \"{input_video}\" -fpsmax {video_fps} {video_res} -c:v libvpx-vp9 -pix_fmt yuv420p -g {video_fps * 20} -keyint_min {video_fps * 2} -lag-in-frames 25 -auto-alt-ref 1 -arnr-maxframes 7 -arnr-strength 4 -enable-tpl 1 -deadline good -cpu-used 4 -row-mt 1 -b:v {video_bitrate - audio_bitrate}k -pass 2 -c:a libopus {audio_channel} -b:a {audio_bitrate}k \"Videos/{output_video}.webm\"")
     
     print("")
     if os.path.isfile("temp.json") == True:
