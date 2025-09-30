@@ -11,7 +11,7 @@ Easily compress large videos down to any size using [**Video2Discord**](https://
 5. Wait for it to finish
 
 ### Linux
-For now you can use Video2Discord.py directly, you need to have FFmpeg and Python installed
+For now you can use `Video2Discord.py` directly, you need to have FFmpeg and Python installed
 
 PyPI release coming soon!
 
