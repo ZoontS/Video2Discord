@@ -1,6 +1,15 @@
-
 FFmpeg/
-build/
-dist/
 Videos/
 /Video2Discord.spec
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv
