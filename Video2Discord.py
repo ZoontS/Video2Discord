@@ -189,10 +189,10 @@ def main(
         
         if platform.system() == "Windows":
             print(f"Compressing and saving video to {os.path.abspath(f"Videos/{output_video}.{video_format}")}. Please wait...")
-            os.system(f"{ffmpeg_args} -loglevel error -pass 1 -an -y -f null NUL && ^{ffmpeg_args} -loglevel warning -stats -pass 2 {pass2_args} \"Videos/{output_video}.{video_format}\"")
+            os.system(f"{ffmpeg_args} -loglevel error -pass 1 -an -y -f null NUL && ^{ffmpeg_args} -loglevel warning -stats -pass 2 -y {pass2_args} \"Videos/{output_video}.{video_format}\"")
         elif platform.system() == "Linux":
             print(f"Compressing and saving video to {os.path.abspath(f"Videos/{output_video}.{video_format}")}. Please wait...")
-            os.system(f"{ffmpeg_args} -loglevel error -pass 1 -an -y -f null /dev/null && \\{ffmpeg_args} -loglevel warning -stats -pass 2 {pass2_args} \"Videos/{output_video}.{video_format}\"")
+            os.system(f"{ffmpeg_args} -loglevel error -pass 1 -an -y -f null /dev/null && \\{ffmpeg_args} -loglevel warning -stats -pass 2 -y {pass2_args} \"Videos/{output_video}.{video_format}\"")
 
         if os.path.isfile("temp.json") == True:
             os.remove("temp.json")
