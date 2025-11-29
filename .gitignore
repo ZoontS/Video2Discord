@@ -1,6 +1,7 @@
 FFmpeg/
 Videos/
-/Video2Discord.spec
+*.spec
+clip.py
 
 # Python-generated files
 __pycache__/
